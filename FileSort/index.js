@@ -11,7 +11,7 @@ exports.query = async (file, context) => {
     const benignBucket = storage.bucket('sp24-41200-antweyer-mid-benign');
     try {
         // Fetch malicious and benign file names from BigQuery
-        const query = `SELECT Class FROM \`sp24-41200-antweyer-midterm.midterm.pdf\` WHERE filename = '${gcsFile.name}';`;
+        const query = `SELECT Class FROM \`sp24-41200-antweyer-midterm.malwareScan.allFiles\` WHERE filename = '${gcsFile.name}';`;
         const [rows] = await bq.query(query);
 
         if (rows.length > 0) {
@@ -23,7 +23,7 @@ exports.query = async (file, context) => {
                 console.log("File is benign")
             }
             if (fileClass === 'Malicious'){
-                await copyFile(gcsFile.bucket, gcsFile.name, benignBucket.name, gcsFile.name)
+                await copyFile(gcsFile.bucket, gcsFile.name, maliciousBucket.name, gcsFile.name)
                 console.log("File is Malicious")
             }
 
