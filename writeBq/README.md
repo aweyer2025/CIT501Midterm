@@ -1,3 +1,7 @@
+This function is not needed since CSV was uploaded to BQ by using BQ's upload tool when creating table.
+
+
+
 
 //file function
 

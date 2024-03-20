@@ -1,3 +1,8 @@
+Program that sorts files from the quaratine bucket to either benign or malicious buckets and queries BQ
+
+
+
+
 
 gcloud functions deploy queryFiles \
 --runtime nodejs18 \
